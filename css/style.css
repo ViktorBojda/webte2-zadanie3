@@ -1,0 +1,36 @@
+body {
+    background-color: rgb(200, 211, 220);
+    font-family: Verdana, Arial, Helvetica, sans-serif
+}
+
+header h1 {
+    letter-spacing: 2rem;
+    font-weight: bolder;
+}
+
+.page-content {
+    background-color: white;
+    box-shadow: 10px 5px 5px gray;
+}
+
+.bg-black {
+    background-color: black;
+}
+
+.border-gray {
+    border: 2px solid gray;
+}
+
+@media all and (max-width: 1200px) {
+    .page-content {
+        background-color: white;
+        box-shadow: none;
+    }
+
+    .container-xl {
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
+
+

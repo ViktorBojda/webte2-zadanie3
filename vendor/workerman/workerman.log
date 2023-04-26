@@ -1,0 +1,21 @@
+2023-04-24 19:00:08 pid:60838 Workerman[index.php] start in DEBUG mode
+2023-04-24 19:02:32 pid:60838 Workerman[index.php] stopping ...
+2023-04-24 19:02:32 pid:60838 Workerman[index.php] has been stopped
+2023-04-24 19:14:04 pid:60898 Workerman[worker.php] start in DEBUG mode
+2023-04-24 19:15:52 pid:60898 Workerman[worker.php] stopping ...
+2023-04-24 19:15:52 pid:60898 Workerman[worker.php] has been stopped
+2023-04-24 19:21:04 pid:60976 Workerman[worker.php] start in DEBUG mode
+2023-04-24 19:34:55 pid:60976 Workerman[worker.php] stopping ...
+2023-04-24 19:34:55 pid:60976 Workerman[worker.php] has been stopped
+2023-04-24 19:34:57 pid:60985 Workerman[worker.php] start in DEBUG mode
+2023-04-24 20:51:13 pid:61270 Workerman[worker.php] start in DEBUG mode
+2023-04-24 20:51:13 pid:61270 Workerman[worker.php] already running
+2023-04-24 20:51:26 pid:61271 Workerman[worker.php] stop 
+2023-04-24 20:51:26 pid:61271 Workerman[worker.php] is stopping ...
+2023-04-24 20:51:26 pid:60985 Workerman[worker.php] stopping ...
+2023-04-24 20:51:27 pid:60985 Workerman[worker.php] has been stopped
+2023-04-24 20:51:27 pid:61271 Workerman[worker.php] stop success
+2023-04-24 20:51:29 pid:61272 Workerman[worker.php] start in DEBUG mode
+2023-04-24 22:05:35 pid:61272 Workerman[worker.php] stopping ...
+2023-04-24 22:05:35 pid:61272 worker[none:61273] exit with status 65280
+2023-04-24 22:05:35 pid:61272 Workerman[worker.php] has been stopped
