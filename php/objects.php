@@ -4,6 +4,18 @@ class Movable {
     public $y;
     public $width;
     public $height;
+
+    function normalizeVector($x, $y) {
+        $magnitude = sqrt($x * $x + $y * $y);
+        if ($magnitude != 0)
+            return [$x / $magnitude, $y / $magnitude];
+        else
+            return [0, 0];
+    }
+
+    function rand_f($min, $max) {
+        return rand($min * 1000, $max * 1000) / 1000.0;
+    }
 }
 
 class Paddle extends Movable {
@@ -13,10 +25,10 @@ class Paddle extends Movable {
     public $playerSide;
 
     function __construct($playerSide, $player_name) {
-        $this->lives = 1;
+        $this->lives = 3;
         $this->playerSide = $playerSide;
         $this->player_name = $player_name;
-        
+
         switch ($playerSide) {
             case Side::Left:
                 $this->x = GRID * 2;
@@ -82,7 +94,7 @@ class Paddle extends Movable {
 }
 
 class Ball extends Movable {
-    private const SPEED = 4;
+    private const SPEED = 6;
     private $vx;
     private $vy;
     public $hit_count;
@@ -92,8 +104,7 @@ class Ball extends Movable {
         $this->y = CANVAS_LENGTH / 2;
         $this->width = GRID;
         $this->height = GRID;     
-        $this->vx = self::SPEED;
-        $this->vy = self::SPEED;
+        list($this->vx, $this->vy) = parent::normalizeVector(parent::rand_f(0.5, 1), parent::rand_f(-1, 1));
         $this->hit_count = 0;
     }
 
@@ -104,22 +115,22 @@ class Ball extends Movable {
                 $this->hit_count++;
                 switch ($value->playerSide) {
                     case Side::Left:
-                        $this->vx *= (rand(-700, -1300) / 1000);
+                        $this->vx *= parent::rand_f(-0.5, -1.5);
                         $this->x=$value->x + $value->width;
                         break;
 
                     case Side::Right:
-                        $this->vx *= (rand(-700, -1300) / 1000);
+                        $this->vx *= parent::rand_f(-0.5, -1.5);
                         $this->x=$value->x - $this->width;
                         break;
 
                     case Side::Top:
-                        $this->vy *= (rand(-700, -1300) / 1000);
+                        $this->vy *= parent::rand_f(-0.5, -1.5);
                         $this->y=$value->y + $value->height;
                         break;
 
                     case Side::Bottom:
-                        $this->vy *= (rand(-700, -1300) / 1000);
+                        $this->vy *= parent::rand_f(-0.5, -1.5);
                         $this->y=$value->y - $this->height;
                         break;
                     
@@ -205,8 +216,9 @@ class Ball extends Movable {
             $this->y = CANVAS_LENGTH / 2;
         }
 
-        $this->x += $this->vx;
-        $this->y += $this->vy; 
+        list($this->vx, $this->vy) = parent::normalizeVector($this->vx, $this->vy);
+        $this->x += $this->vx * (self::SPEED + ($this->hit_count / 5.0));
+        $this->y += $this->vy * (self::SPEED + ($this->hit_count / 5.0)); 
     }
 
     function make_player_lose_life($playerSide) {
